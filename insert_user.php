@@ -16,17 +16,33 @@
 //     die("Erreur : " . $e->getMessage());
 // }
 
+// require 'db.php';
+
+// $username = "TestUser";
+// $email = "test@example.com";
+// $password = "MonMotDePasse123";
+
+// // Hachage sécurisé du mot de passe
+// $hashed_password = password_hash($password, PASSWORD_ARGON2ID);
+
+// $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+// $stmt->execute([$username, $email, $hashed_password]);
+
+// echo "Utilisateur ajouté avec un mot de passe sécurisé.";
+
 require 'db.php';
 
-$username = "TestUser";
-$email = "test@example.com";
-$password = "MonMotDePasse123";
+$username = "AdminUser";
+$email = "admin@example.com";
+$password = "AdminPassword123";
+$role = "admin";  // On définit ici le rôle de l'utilisateur (admin ou user)
 
 // Hachage sécurisé du mot de passe
 $hashed_password = password_hash($password, PASSWORD_ARGON2ID);
 
-$stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-$stmt->execute([$username, $email, $hashed_password]);
+$stmt = $pdo->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
+$stmt->execute([$username, $email, $hashed_password, $role]);
 
-echo "Utilisateur ajouté avec un mot de passe sécurisé.";
+echo "Utilisateur avec $role admin ajouté.";
 ?>
+
