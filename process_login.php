@@ -83,7 +83,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($user && password_verify($password, $user['password'])) {
             // Génération d'un token unique
             $token = bin2hex(random_bytes(32));
-            $expiry = date('Y-m-d H:i:s', strtotime('+1 hour')); // Expire dans 1 heure
+          //   $expiry = date('Y-m-d H:i:s', strtotime('+1 hour')); // Expire dans 1 heure
+               $expiry = date('Y-m-d H:i:s', strtotime('+90 seconds')); // Expire dans 30 secondes
+
 
             // Stockage du token et de son expiration
             $update = $pdo->prepare("UPDATE users SET token = ?, token_expiry = ? WHERE id = ?");
