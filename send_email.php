@@ -13,9 +13,10 @@ function sendActivationEmail($userEmail, $username, $activationLink) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; // Serveur SMTP de Gmail
         $mail->SMTPAuth = true;
-        
+        $Username = 'bomissoelvis1919@gmail.com';
+
         // Utilisation de variables d'environnement pour sécuriser les informations sensibles
-        $mail->Username = 'bomissoelvis1919@gmail.com'; // Utilisation de la variable d'environnement pour l'email
+        $mail->Username = $Username; // Utilisation de la variable d'environnement pour l'email
         $mail->Password = 'bOmI$$O?ElvI$.163'; // Utilisation de la variable d'environnement pour le mot de passe
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
